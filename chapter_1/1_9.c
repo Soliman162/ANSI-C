@@ -8,34 +8,25 @@
  */
 #include <stdio.h>
 
-#define MAX_SIZE    1000
-
 int main(void)
 {
     char c ;
-    int i=0,s_count=0;
-    char string[MAX_SIZE];
+    int s_count=0;
 
-    while( (c=getchar()) != EOF  && i<MAX_SIZE )
+    while( (c=getchar()) != EOF  )
     {
         if ( c=='\t' || c==' ' )
         {
-            s_count++;
-            if(s_count>1)
-                i--;
-            string[i++] = ' ';
+            if(s_count==0)
+            {
+                s_count++;
+                putchar(' ');
+            }
         }else
         {
-            s_count = 0;
-            string[i++] = c;
+            s_count=0;
+            putchar(c);
         }
     }
-    string[i] = '\0';
-
-    for(i=0;i<MAX_SIZE && string[i] != '\0';i++)
-    {
-        printf("%c",string[i]);
-    }
-
     return 0;
 }
